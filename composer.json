@@ -1,0 +1,34 @@
+{
+    "name": "insidestyles/swoole-bridge",
+    "description": "Swoole Bridge For Php Frameworks",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "fuong",
+            "email": "insidestyles@gmail.com"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2",
+        "ext-swoole": ">=2.1.0",
+        "psr/log": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Insidestyles\\SwooleBridge\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Insidestyles\\SwooleBridge\\Test\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/swoole-bridge"
+    ]
+}
