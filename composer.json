@@ -13,10 +13,21 @@
     "require": {
         "php": "^7.2",
         "ext-swoole": ">=2.1.0",
-        "psr/log": "^1.0"
+        "psr/log": "^1.0",
+        "psr/http-message": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5"
+        "phpunit/phpunit": "^6.5",
+        "eaglewu/swoole-ide-helper": "dev-master",
+        "symfony/psr-http-message-bridge": "^1.0",
+        "symfony/http-kernel": "^4.0",
+        "zendframework/zend-diactoros": "^1.7"
+    },
+    "suggest": {
+        "symfony/psr-http-message-bridge": "Allows builder for Symfony http message",
+        "symfony/http-kernel": "Allows adapter for symfony",
+        "zendframework/zend-diactoros": "Allows builder for Zend Expressive http message",
+        "zendframework/zend-expressive": "Allows adapter for Zend Expressive"
     },
     "autoload": {
         "psr-4": {
