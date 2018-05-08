@@ -43,8 +43,9 @@ class SymfonyRequestBuilder implements RequestBuilderInterface
             $server,
             $swooleRequest->rawContent()
         );
-        if (0 === strpos($sfRequest->headers->get('CONTENT_TYPE'), 'application/x-www-form-urlencoded')
-            && in_array(strtoupper($sfRequest->server->get('REQUEST_METHOD', 'GET')), ['PUT', 'DELETE', 'PATCH'], true)
+        if (0 === strpos((string)$sfRequest->headers->get('CONTENT_TYPE'), 'application/x-www-form-urlencoded')
+            && in_array(strtoupper((string)$sfRequest->server->get('REQUEST_METHOD', 'GET')),
+                ['PUT', 'DELETE', 'PATCH'], true)
         ) {
             parse_str($sfRequest->getContent(), $data);
             $sfRequest->request = new ParameterBag($data);

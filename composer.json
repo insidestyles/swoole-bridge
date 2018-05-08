@@ -36,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Insidestyles\\SwooleBridge\\Test\\": "tests/"
+            "Insidestyles\\SwooleBridge\\Tests\\": "tests/"
         }
     },
     "bin": [

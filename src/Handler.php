@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Insidestyles\SwooleBridge\Emiter;
+namespace Insidestyles\SwooleBridge;
 
 use Insidestyles\SwooleBridge\Adapter\SwooleAdapterInterface;
-use Insidestyles\SwooleBridge\Builder\RequestBuilderInterface;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
 
@@ -32,10 +32,10 @@ class Handler implements SwooleBridgeInterface
      */
     public function __construct(
         SwooleAdapterInterface $adapter,
-        LoggerInterface $logger
+        LoggerInterface $logger = null
     ) {
         $this->adapter = $adapter;
-        $this->logger = $logger;
+        $this->logger = $logger ?? new NullLogger();
     }
 
     /**

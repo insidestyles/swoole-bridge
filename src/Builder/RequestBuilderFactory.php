@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Insidestyles\SwooleBridge\Builder;
 
+use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Http\Request as SwooleRequest;
 use Symfony\Component\HttpFoundation\Request as SfRequest;
-use Zend\Diactoros\ServerRequest;
 
 /**
  * Class RequestBuilderFactory
@@ -24,9 +24,9 @@ class RequestBuilderFactory
 
     /**
      * @param SwooleRequest $swooleRequest
-     * @return ServerRequest
+     * @return ServerRequestInterface
      */
-    public function createZendExpressiveRequest(SwooleRequest $swooleRequest): ServerRequest
+    public function createZendExpressiveRequest(SwooleRequest $swooleRequest): ServerRequestInterface
     {
         return $this->createRequest($swooleRequest, ZendExpressiveRequestBuilder::class);
     }
