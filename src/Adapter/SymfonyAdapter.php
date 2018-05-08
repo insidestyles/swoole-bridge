@@ -21,7 +21,6 @@ use Symfony\Component\HttpKernel\Kernel;
  */
 class SymfonyAdapter implements SwooleAdapterInterface
 {
-
     /**
      * @var Kernel
      */
@@ -51,10 +50,13 @@ class SymfonyAdapter implements SwooleAdapterInterface
     public function __construct(
         Kernel $app,
         SwooleResponseEmitterInterface $responseEmitter,
-        RequestBuilderFactory $requestBuilder
+        RequestBuilderFactory $requestBuilder,
+        DiactorosFactory $psr7Factory
     ) {
         $this->app = $app;
         $this->requestBuilderFactory = $requestBuilder;
+        $this->responseEmitter = $responseEmitter;
+        $this->psr7Factory = $psr7Factory;
     }
 
     /**

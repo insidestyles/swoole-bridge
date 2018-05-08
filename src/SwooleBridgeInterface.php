@@ -6,7 +6,7 @@
  * Time: 10:49
  */
 
-namespace Insidestyles\SwooleBridge\Emiter;
+namespace Insidestyles\SwooleBridge;
 
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
@@ -14,7 +14,7 @@ use Swoole\Http\Response as SwooleResponse;
 
 /**
  * Class SwooleResponseEmitter
- * @package Insidestyles\SwooleBridge\Emiter
+ * @package Insidestyles\SwooleBridge
  */
 interface SwooleBridgeInterface
 {

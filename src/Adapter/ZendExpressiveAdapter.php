@@ -48,6 +48,7 @@ class ZendExpressiveAdapter implements SwooleAdapterInterface
     ) {
         $this->app = $app;
         $this->requestBuilderFactory = $requestBuilder;
+        $this->responseEmitter = $responseEmitter;
     }
 
     /**
