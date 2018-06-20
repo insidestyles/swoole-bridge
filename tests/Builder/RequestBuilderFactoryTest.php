@@ -28,28 +28,14 @@ class RequestBuilderFactoryTest extends BaseTestCase
     /**
      * @group builder
      */
-    public function testCreateSymfonyRequest()
+    public function testCreateServerRequest()
     {
         $swooleRequest = $this->mockSwooleRequest();
         $swooleRequest->header = [];
         $swooleRequest->server = [];
         $swooleRequest->expects($this->once())->method('rawContent')
             ->willReturn('');
-        $res = $this->instance->createSymfonyRequest($swooleRequest);
-        $this->assertInstanceOf(SfRequest::class, $res);
-    }
-
-    /**
-     * @group builder
-     */
-    public function testCreateZendExpressiveRequest()
-    {
-        $swooleRequest = $this->mockSwooleRequest();
-        $swooleRequest->header = [];
-        $swooleRequest->server = [];
-        $swooleRequest->expects($this->once())->method('rawContent')
-            ->willReturn('');
-        $res = $this->instance->createZendExpressiveRequest($swooleRequest);
+        $res = $this->instance->createServerRequest($swooleRequest);
         $this->assertInstanceOf(ServerRequestInterface::class, $res);
     }
 }

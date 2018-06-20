@@ -2,6 +2,7 @@
 
 namespace Insidestyles\SwooleBridge\Tests\Traits;
 
+use Insidestyles\SwooleBridge\Adapter\Kernel\Psr15SymfonyKernel;
 use Insidestyles\SwooleBridge\Builder\RequestBuilderFactory;
 use Insidestyles\SwooleBridge\Emiter\SwooleResponseEmitterInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -46,6 +47,15 @@ trait ServiceMocksTrait
     {
         return $this->mock(Kernel::class);
     }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function mockPsr15SymfonyKernel()
+    {
+        return $this->mock(Psr15SymfonyKernel::class);
+    }
+
 
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject

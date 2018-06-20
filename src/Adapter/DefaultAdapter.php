@@ -8,10 +8,11 @@
 
 namespace Insidestyles\SwooleBridge\Adapter;
 
+
 /**
- * Class SymfonyAdapter
+ * Class DefaultAdapter
  * @package Insidestyles\SwooleBridge\Adapter
  */
-class SymfonyAdapter extends AbstractAdapter
+class DefaultAdapter extends AbstractAdapter
 {
 }

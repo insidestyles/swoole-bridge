@@ -3,18 +3,18 @@ declare(strict_types=1);
 
 namespace Insidestyles\SwooleBridge\Builder;
 
+use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Http\Request as SwooleRequest;
 use Zend\Diactoros\ServerRequest;
 
 /**
- * Class ZendExpressiveRequestBuilder
- *
- * @author shafer_w2002@yahoo.com
+ * Class ServerRequestBuilder
+ * @package Insidestyles\SwooleBridge\Builder
  */
-class ZendExpressiveRequestBuilder implements RequestBuilderInterface
+class ServerRequestBuilder implements RequestBuilderInterface
 {
     /**
-     * @var ServerRequest
+     * @var ServerRequestInterface
      */
     private $request;
 
@@ -95,9 +95,9 @@ class ZendExpressiveRequestBuilder implements RequestBuilderInterface
     }
 
     /**
-     * @return mixed|ServerRequest
+     * @return ServerRequestInterface
      */
-    public function getRequest()
+    public function getRequest(): ServerRequestInterface
     {
         return $this->request;
     }

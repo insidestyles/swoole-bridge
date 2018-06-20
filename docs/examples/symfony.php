@@ -8,7 +8,9 @@ $http = new \swoole_http_server($host, $port);
 $responseEmitter = new \Insidestyles\SwooleBridge\Emiter\SwooleResponseEmitter();
 $requestBuilderFactory = new \Insidestyles\SwooleBridge\Builder\RequestBuilderFactory();
 $factory = new \Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory();
-$adapter = new \Insidestyles\SwooleBridge\Adapter\SymfonyAdapter($kernel, $responseEmitter, $requestBuilderFactory, $factory);
+$adapter = new \Insidestyles\SwooleBridge\Adapter\SymfonyAdapter($responseEmitter, $requestBuilderFactory);
+$psr15Kernel = new \Insidestyles\SwooleBridge\Adapter\Kernel\Psr15SymfonyKernel($kernel);
+$adapter->setRequestHandler($psr15Kernel);
 $handler = new \Insidestyles\SwooleBridge\Handler($adapter, $logger);
 
 $http->on(

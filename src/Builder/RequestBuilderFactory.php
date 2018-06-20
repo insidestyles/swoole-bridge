@@ -5,7 +5,6 @@ namespace Insidestyles\SwooleBridge\Builder;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Http\Request as SwooleRequest;
-use Symfony\Component\HttpFoundation\Request as SfRequest;
 
 /**
  * Class RequestBuilderFactory
@@ -13,22 +12,14 @@ use Symfony\Component\HttpFoundation\Request as SfRequest;
  */
 class RequestBuilderFactory
 {
-    /**
-     * @param SwooleRequest $swooleRequest
-     * @return SfRequest
-     */
-    public function createSymfonyRequest(SwooleRequest $swooleRequest): SfRequest
-    {
-        return $this->createRequest($swooleRequest, SymfonyRequestBuilder::class);
-    }
 
     /**
      * @param SwooleRequest $swooleRequest
      * @return ServerRequestInterface
      */
-    public function createZendExpressiveRequest(SwooleRequest $swooleRequest): ServerRequestInterface
+    public function createServerRequest(SwooleRequest $swooleRequest): ServerRequestInterface
     {
-        return $this->createRequest($swooleRequest, ZendExpressiveRequestBuilder::class);
+        return $this->createRequest($swooleRequest, ServerRequestBuilder::class);
     }
 
     /**
@@ -36,22 +27,12 @@ class RequestBuilderFactory
      * @param string $builderClass
      * @return mixed
      */
-    public function createRequest(SwooleRequest $swooleRequest, string $builderClass)
+    protected function createRequest(SwooleRequest $swooleRequest, string $builderClass): ServerRequestInterface
     {
+        /** @var RequestBuilderInterface $builder */
         $builder = new $builderClass();
+        $builder->build($swooleRequest);
 
-        return $this->makeRequest($swooleRequest, $builder);
-    }
-
-    /**
-     * @param RequestBuilderInterface $requestBuilder
-     * @param SwooleRequest $swooleRequest
-     * @return mixed
-     */
-    private function makeRequest(SwooleRequest $swooleRequest, RequestBuilderInterface $requestBuilder)
-    {
-        $requestBuilder->build($swooleRequest);
-
-        return $requestBuilder->getRequest();
+        return $builder->getRequest();
     }
 }

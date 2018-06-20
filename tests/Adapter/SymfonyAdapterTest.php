@@ -38,16 +38,15 @@ class SymfonyAdapterTest extends BaseTestCase
 
     protected function setUp()
     {
-        $this->appMock = $this->mockSymfonyKernel();
+        $this->appMock = $this->mockPsr15SymfonyKernel();
         $this->requestBuilderFactoryMock = $this->mockRequestBuilderFactory();
         $this->responseEmitterMock = $this->mockSwooleResponseEmitterInterface();
         $this->psr7FactoryMock = $this->mockDiactorosFactory();
         $this->instance = new SymfonyAdapter(
-            $this->appMock,
             $this->responseEmitterMock,
-            $this->requestBuilderFactoryMock,
-            $this->psr7FactoryMock
+            $this->requestBuilderFactoryMock
         );
+        $this->instance->setRequestHandler($this->appMock);
     }
 
     /**
@@ -57,18 +56,15 @@ class SymfonyAdapterTest extends BaseTestCase
     {
         $swooleRequest = $this->mockSwooleRequest();
         $swooleResponse = $this->mockSwooleResponse();
-        $sfRequest = $this->mockSfRequest();
-        $sfResponse = $this->mockSfResponse();
-        $this->requestBuilderFactoryMock->expects($this->once())->method('createSymfonyRequest')
-            ->with($swooleRequest)
-            ->willReturn($sfRequest);
-        $this->appMock->expects($this->once())->method('handle')
-            ->with($sfRequest)
-            ->willReturn($sfResponse);
+        $serverRequest = $this->mockPsrServerRequest();
         $psrResonse = $this->mockPsrResponse();
-        $this->psr7FactoryMock->expects($this->once())->method('createResponse')
-            ->with($sfResponse)
+        $this->requestBuilderFactoryMock->expects($this->once())->method('createServerRequest')
+            ->with($swooleRequest)
+            ->willReturn($serverRequest);
+        $this->appMock->expects($this->once())->method('handle')
+            ->with($serverRequest)
             ->willReturn($psrResonse);
+        $psrResonse = $this->mockPsrResponse();
         $this->responseEmitterMock->expects($this->once())->method('toSwoole')
             ->with($psrResonse, $swooleResponse);
         $this->instance->handle($swooleRequest, $swooleResponse);

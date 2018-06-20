@@ -8,21 +8,21 @@
 
 namespace Insidestyles\SwooleBridge\Tests\Builder;
 
-use Insidestyles\SwooleBridge\Builder\ZendExpressiveRequestBuilder;
+use Insidestyles\SwooleBridge\Builder\ServerRequestBuilder;
 use Insidestyles\SwooleBridge\Tests\Base\BaseTestCase;
 use Swoole\Http\Request as SwooleRequest;
 use Zend\Diactoros\ServerRequest;
 
-class ZendExpressiveRequestBuilderTest extends BaseTestCase
+class ServerRequestBuilderTest extends BaseTestCase
 {
     /**
-     * @var ZendExpressiveRequestBuilder
+     * @var ServerRequestBuilder
      */
     private $instance;
 
     protected function setUp()
     {
-        $this->instance = new ZendExpressiveRequestBuilder();
+        $this->instance = new ServerRequestBuilder();
     }
 
     /**
