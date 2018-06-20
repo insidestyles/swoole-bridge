@@ -28,11 +28,11 @@ class Handler implements SwooleBridgeInterface
     /**
      * Handler constructor.
      * @param SwooleAdapterInterface $adapter
-     * @param LoggerInterface $logger
+     * @param null|LoggerInterface $logger
      */
     public function __construct(
         SwooleAdapterInterface $adapter,
-        LoggerInterface $logger = null
+        ?LoggerInterface $logger = null
     ) {
         $this->adapter = $adapter;
         $this->logger = $logger ?? new NullLogger();
