@@ -8,6 +8,9 @@ use Insidestyles\SwooleBridge\Emiter\SwooleResponseEmitterInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
+use Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface;
+use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Kernel;
 use Psr\Http\Message\ResponseInterface as PsrResponse;
 use Zend\Expressive\Application as ZendApp;
@@ -135,5 +138,29 @@ trait ServiceMocksTrait
     protected function mockSfResponse()
     {
         return $this->mock(SfResponse::class);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function mockHttpKernelInterface()
+    {
+        return $this->mock(HttpKernelInterface::class);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function mockHttpFoundationFactoryInterface()
+    {
+        return $this->mock(HttpFoundationFactoryInterface::class);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function mockHttpMessageFactoryInterface()
+    {
+        return $this->mock(HttpMessageFactoryInterface::class);
     }
 }

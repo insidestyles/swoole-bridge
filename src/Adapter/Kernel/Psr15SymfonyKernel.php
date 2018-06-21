@@ -40,16 +40,16 @@ class Psr15SymfonyKernel implements RequestHandlerInterface
 
     /**
      * Psr15SymfonyKernel constructor.
-     * @param HttpKernelInterface $symfonyMiddleware
+     * @param HttpKernelInterface $httpKernel
      * @param HttpFoundationFactoryInterface|null $httpFoundationFactory
      * @param HttpMessageFactoryInterface|null $httpMessageFactory
      */
     public function __construct(
-        HttpKernelInterface $symfonyMiddleware,
+        HttpKernelInterface $httpKernel,
         HttpFoundationFactoryInterface $httpFoundationFactory = null,
         HttpMessageFactoryInterface $httpMessageFactory = null
     ) {
-        $this->symfonyMiddleware = $symfonyMiddleware;
+        $this->httpKernel = $httpKernel;
         $this->httpFoundationFactory = $httpFoundationFactory ?: new HttpFoundationFactory();
         $this->httpMessageFactory = $httpMessageFactory ?: new DiactorosFactory();
     }
