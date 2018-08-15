@@ -13,6 +13,6 @@ namespace Insidestyles\SwooleBridge\Adapter;
  * Class DefaultAdapter
  * @package Insidestyles\SwooleBridge\Adapter
  */
-class DefaultAdapter extends AbstractAdapter
+final class DefaultAdapter extends AbstractAdapter
 {
 }

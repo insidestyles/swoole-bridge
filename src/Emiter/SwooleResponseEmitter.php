@@ -10,7 +10,7 @@ use Swoole\Http\Response as SwooleResponse;
  * Class SwooleResponseEmitter
  * @package Insidestyles\SwooleBridge\Emiter
  */
-class SwooleResponseEmitter implements SwooleResponseEmitterInterface
+final class SwooleResponseEmitter implements SwooleResponseEmitterInterface
 {
 
     /**

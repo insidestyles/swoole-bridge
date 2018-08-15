@@ -44,9 +44,9 @@ class SymfonyAdapterTest extends BaseTestCase
         $this->psr7FactoryMock = $this->mockDiactorosFactory();
         $this->instance = new SymfonyAdapter(
             $this->responseEmitterMock,
+            $this->appMock,
             $this->requestBuilderFactoryMock
         );
-        $this->instance->setRequestHandler($this->appMock);
     }
 
     /**

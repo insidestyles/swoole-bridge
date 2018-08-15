@@ -151,6 +151,14 @@ trait ServiceMocksTrait
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject
      */
+    protected function mockIlluminateKernelInterface()
+    {
+        return $this->mock(\Illuminate\Contracts\Http\Kernel::class);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
     protected function mockHttpFoundationFactoryInterface()
     {
         return $this->mock(HttpFoundationFactoryInterface::class);

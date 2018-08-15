@@ -1,9 +1,12 @@
 <?php
+
 $host = '127.0.0.1';
 $port = 8080;
 
-$kernel = new Kernel($env, $debug);//App\Kernel or AppKernel;
-$psr15Kernel = new \Insidestyles\SwooleBridge\Adapter\Kernel\Psr15SymfonyKernel($kernel);
+/** @var \Psr\Container\ContainerInterface $container */
+$container = '...';
+/** @var \Zend\Expressive\Application $app */
+$psr15Kernel = $container->get(\Zend\Expressive\Application::class);
 
 $http = new \swoole_http_server($host, $port);
 $responseEmitter = new \Insidestyles\SwooleBridge\Emiter\SwooleResponseEmitter();

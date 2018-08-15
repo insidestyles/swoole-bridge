@@ -43,9 +43,11 @@ abstract class AbstractAdapter implements SwooleAdapterInterface
      */
     public function __construct(
         SwooleResponseEmitterInterface $responseEmitter,
+        RequestHandlerInterface $requestHandler,
         RequestBuilderFactory $requestBuilder
     ) {
         $this->requestBuilderFactory = $requestBuilder;
+        $this->requestHandler = $requestHandler;
         $this->responseEmitter = $responseEmitter;
     }
 
@@ -62,17 +64,9 @@ abstract class AbstractAdapter implements SwooleAdapterInterface
     }
 
     /**
-     * @param RequestHandlerInterface $requestHandler
-     */
-    public function setRequestHandler(RequestHandlerInterface $requestHandler): void
-    {
-        $this->requestHandler = $requestHandler;
-    }
-
-    /**
      * @param SwooleRequest $swooleRequest
      */
-    public function before(SwooleRequest $swooleRequest)
+    protected function before(SwooleRequest $swooleRequest)
     {
         //optional
     }
@@ -80,7 +74,7 @@ abstract class AbstractAdapter implements SwooleAdapterInterface
     /**
      * @param ResponseInterface $response
      */
-    public function after(ResponseInterface $response)
+    protected function after(ResponseInterface $response)
     {
         //optional
     }

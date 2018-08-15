@@ -9,9 +9,9 @@
 namespace Insidestyles\SwooleBridge\Adapter;
 
 /**
- * Class ZendExpressiveAdapter
+ * Class LaravelAdapter
  * @package Insidestyles\SwooleBridge\Adapter
  */
-final class ZendExpressiveAdapter extends AbstractAdapter
+final class LaravelAdapter extends AbstractAdapter
 {
 }

@@ -13,7 +13,7 @@ use Swoole\Http\Response as SwooleResponse;
  * Class SwooleResponseEmitter
  * @package Insidestyles\SwooleBridge\Emiter
  */
-class Handler implements SwooleBridgeInterface
+final class Handler implements SwooleBridgeInterface
 {
     /**
      * @var SwooleAdapterInterface

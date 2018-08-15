@@ -44,9 +44,9 @@ class ZendExpressiveAdapterTest extends BaseTestCase
         $this->responseEmitterMock = $this->mockSwooleResponseEmitterInterface();
         $this->instance = new ZendExpressiveAdapter(
             $this->responseEmitterMock,
+            $this->appMock,
             $this->requestBuilderFactoryMock
         );
-        $this->instance->setRequestHandler($this->appMock);
     }
 
     /**
