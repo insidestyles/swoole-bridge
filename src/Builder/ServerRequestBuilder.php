@@ -27,6 +27,8 @@ class ServerRequestBuilder implements RequestBuilderInterface
 
         if (empty($body)) {
             $body = 'php://input';
+        } else {
+            $body = fopen('data://text/plain,' . $body,'r');
         }
 
         $this->request = new ServerRequest(
