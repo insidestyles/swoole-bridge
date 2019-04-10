@@ -6,7 +6,7 @@ Swoole Bridge For Php Frameworks. Currently supports:
 
 ## Requirements
 
-* PHP >= 7.2
+* PHP >= 7.1
 * [ext-swoole](https://pecl.php.net/package/swoole) >= 2.1
 
 
