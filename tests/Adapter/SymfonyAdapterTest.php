@@ -4,39 +4,24 @@ namespace Insidestyles\SwooleBridge\Tests\Adapter;
 
 use Insidestyles\SwooleBridge\Adapter\SymfonyAdapter;
 use Insidestyles\SwooleBridge\Tests\Base\BaseTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
- * Class SymfonyAdapterTest
- * @package Insidestyles\SwooleBridge\Tests\Adapter
+ * @author Fuong <insidestyles@gmail.com>
  */
 class SymfonyAdapterTest extends BaseTestCase
 {
-    /**
-     * @var SymfonyAdapter
-     */
-    private $instance;
+    private SymfonyAdapter $instance;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $appMock;
+    private MockObject $appMock;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $requestBuilderFactoryMock;
+    private MockObject $requestBuilderFactoryMock;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $responseEmitterMock;
+    private MockObject $responseEmitterMock;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $psr7FactoryMock;
+    private MockObject $psr7FactoryMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->appMock = $this->mockPsr15SymfonyKernel();
         $this->requestBuilderFactoryMock = $this->mockRequestBuilderFactory();
@@ -52,7 +37,7 @@ class SymfonyAdapterTest extends BaseTestCase
     /**
      * @group adapter
      */
-    public function testHandle()
+    public function testHandle(): void
     {
         $swooleRequest = $this->mockSwooleRequest();
         $swooleResponse = $this->mockSwooleResponse();

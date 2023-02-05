@@ -7,8 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Http\Request as SwooleRequest;
 
 /**
- * Class RequestBuilderFactory
- * @package Insidestyles\SwooleBridge\Builder
+ * @author Fuong <insidestyles@gmail.com>
  */
 class RequestBuilderFactory
 {
@@ -21,12 +20,7 @@ class RequestBuilderFactory
     {
         return $this->createRequest($swooleRequest, ServerRequestBuilder::class);
     }
-
-    /**
-     * @param SwooleRequest $swooleRequest
-     * @param string $builderClass
-     * @return mixed
-     */
+    
     protected function createRequest(SwooleRequest $swooleRequest, string $builderClass): ServerRequestInterface
     {
         /** @var RequestBuilderInterface $builder */

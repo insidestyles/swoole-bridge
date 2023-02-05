@@ -1,3 +1,14 @@
+Version 1.1.1:
+ - Merge branch 'master' of github.com:insidestyles/swoole-bridge
+ - psr17
+
+Version 1.1.0:
+ - update php8
+
+Version 1.0.0:
+ - init 1.0
+ - sm change
+
 Version 0.4.0:
  - fix server request build
 

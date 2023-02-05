@@ -7,8 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Swoole\Http\Response as SwooleResponse;
 
 /**
- * Class SwooleResponseEmitter
- * @package Insidestyles\SwooleBridge\Emiter
+ * @author Fuong <insidestyles@gmail.com>
  */
 final class SwooleResponseEmitter implements SwooleResponseEmitterInterface
 {
@@ -25,10 +24,6 @@ final class SwooleResponseEmitter implements SwooleResponseEmitterInterface
         $this->sendResponse($psr7Response, $swooleResponse);
     }
 
-    /**
-     * @param ResponseInterface $psr7Response
-     * @param SwooleResponse $swooleResponse
-     */
     protected function populateHeaders(
         ResponseInterface $psr7Response,
         SwooleResponse $swooleResponse
@@ -45,10 +40,6 @@ final class SwooleResponseEmitter implements SwooleResponseEmitterInterface
         }
     }
 
-    /**
-     * @param ResponseInterface $psr7Response
-     * @param SwooleResponse $swooleResponse
-     */
     protected function sendResponse(
         ResponseInterface $psr7Response,
         SwooleResponse $swooleResponse

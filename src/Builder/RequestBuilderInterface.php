@@ -1,29 +1,17 @@
 <?php
-/**
- * User: insidestyles
- * Date: 05.05.18
- * Time: 8:25
- */
 
 namespace Insidestyles\SwooleBridge\Builder;
 
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Http\Request as SwooleRequest;
 
 
 /**
- * Interface RequestBuilderInterface
- * @package Insidestyles\SwooleBridge\Builder
+ * @author Fuong <insidestyles@gmail.com>
  */
 interface RequestBuilderInterface
 {
-    /**
-     * @param SwooleRequest $swooleRequest
-     */
-    public function build(SwooleRequest $swooleRequest);
-
-    /**
-     * @return mixed
-     */
-    public function getRequest();
+    public function build(SwooleRequest $swooleRequest): void;
+    public function getRequest(): ServerRequestInterface;
 }

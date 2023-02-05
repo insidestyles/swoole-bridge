@@ -10,32 +10,14 @@ use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
 
 /**
- * Class SwooleResponseEmitter
- * @package Insidestyles\SwooleBridge\Emiter
+ * @author Fuong <insidestyles@gmail.com>
  */
 final class Handler implements SwooleBridgeInterface
 {
-    /**
-     * @var SwooleAdapterInterface
-     */
-    private $adapter;
-
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
-     * Handler constructor.
-     * @param SwooleAdapterInterface $adapter
-     * @param null|LoggerInterface $logger
-     */
     public function __construct(
-        SwooleAdapterInterface $adapter,
-        ?LoggerInterface $logger = null
+        private readonly SwooleAdapterInterface $adapter,
+        private readonly ?LoggerInterface $logger = new NullLogger()
     ) {
-        $this->adapter = $adapter;
-        $this->logger = $logger ?? new NullLogger();
     }
 
     /**

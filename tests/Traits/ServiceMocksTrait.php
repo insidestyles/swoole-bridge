@@ -6,12 +6,14 @@ use Insidestyles\SwooleBridge\Adapter\Kernel\Psr15SymfonyKernel;
 use Insidestyles\SwooleBridge\Builder\RequestBuilderFactory;
 use Insidestyles\SwooleBridge\Emiter\SwooleResponseEmitterInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory;
 use Symfony\Bridge\PsrHttpMessage\HttpFoundationFactoryInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ResponseInterface as PsrResponse;
 use Zend\Expressive\Application as ZendApp;
 use Swoole\Http\Request as SwooleRequest;
@@ -20,154 +22,99 @@ use Symfony\Component\HttpFoundation\Request as SfRequest;
 use Symfony\Component\HttpFoundation\Response as SfResponse;
 
 /**
- * Class ServiceMocksTrait helps to mock the common objects.
- * @package Insidestyles\SwooleBridge\Tests\Traits
+ * @author Fuong <insidestyles@gmail.com>
  */
 trait ServiceMocksTrait
 {
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mock($className)
+
+    protected function mock($className): MockObject
     {
         return self::getMockBuilder($className)
             ->disableOriginalConstructor()
             ->getMock();
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockPsrLogger()
+    protected function mockPsrLogger(): MockObject
     {
         return $this->mock(LoggerInterface::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockSymfonyKernel()
+    protected function mockSymfonyKernel(): MockObject
     {
         return $this->mock(Kernel::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockPsr15SymfonyKernel()
+    protected function mockPsr15SymfonyKernel(): MockObject
     {
         return $this->mock(Psr15SymfonyKernel::class);
     }
 
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockZendApp()
+    protected function mockZendApp(): MockObject
     {
-        return $this->mock(ZendApp::class);
+        return $this->mock(RequestHandlerInterface::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockSwooleResponseEmitterInterface()
+    protected function mockSwooleResponseEmitterInterface(): MockObject
     {
         return $this->mock(SwooleResponseEmitterInterface::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockRequestBuilderFactory()
+    protected function mockRequestBuilderFactory(): MockObject
     {
         return $this->mock(RequestBuilderFactory::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockDiactorosFactory()
+    protected function mockDiactorosFactory(): MockObject
     {
         return $this->mock(DiactorosFactory::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockPsrResponse()
+    protected function mockPsrResponse(): MockObject
     {
         return $this->mock(PsrResponse::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockPsrServerRequest()
+    protected function mockPsrServerRequest(): MockObject
     {
         return $this->mock(ServerRequestInterface::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockSwooleRequest()
+    protected function mockSwooleRequest(): MockObject
     {
         return $this->mock(SwooleRequest::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockSwooleResponse()
+    protected function mockSwooleResponse(): MockObject
     {
         return $this->mock(SwooleResponse::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockSfRequest()
+    protected function mockSfRequest(): MockObject
     {
         return $this->mock(SfRequest::class);
     }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockSfResponse()
+    
+    protected function mockSfResponse(): MockObject
     {
         return $this->mock(SfResponse::class);
     }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockHttpKernelInterface()
+    
+    protected function mockHttpKernelInterface(): MockObject
     {
         return $this->mock(HttpKernelInterface::class);
     }
 
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockIlluminateKernelInterface()
+    protected function mockIlluminateKernelInterface(): MockObject
     {
         return $this->mock(\Illuminate\Contracts\Http\Kernel::class);
     }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockHttpFoundationFactoryInterface()
+    
+    protected function mockHttpFoundationFactoryInterface(): MockObject
     {
         return $this->mock(HttpFoundationFactoryInterface::class);
     }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function mockHttpMessageFactoryInterface()
+    
+    protected function mockHttpMessageFactoryInterface(): MockObject
     {
         return $this->mock(HttpMessageFactoryInterface::class);
     }

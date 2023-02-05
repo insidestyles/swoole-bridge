@@ -1,43 +1,26 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: insidestyles
- * Date: 07.05.18
- * Time: 15:33
- */
 
 namespace Insidestyles\SwooleBridge\Tests\Adapter;
 
 use Insidestyles\SwooleBridge\Adapter\ZendExpressiveAdapter;
 use Insidestyles\SwooleBridge\Tests\Base\BaseTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
- * Class ZendExpressiveAdapterTest
- * @package Insidestyles\SwooleBridge\Tests\Adapter
+ * @author Fuong <insidestyles@gmail.com>
  */
 class ZendExpressiveAdapterTest extends BaseTestCase
 {
-    /**
-     * @var ZendExpressiveAdapter
-     */
-    private $instance;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $appMock;
+    private ZendExpressiveAdapter $instance;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $requestBuilderFactoryMock;
+    private MockObject $appMock;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $responseEmitterMock;
+    private MockObject $requestBuilderFactoryMock;
 
-    protected function setUp()
+    private MockObject $responseEmitterMock;
+
+    protected function setUp(): void
     {
         $this->appMock = $this->mockZendApp();
         $this->requestBuilderFactoryMock = $this->mockRequestBuilderFactory();
@@ -52,7 +35,7 @@ class ZendExpressiveAdapterTest extends BaseTestCase
     /**
      * @group adapter
      */
-    public function testHandle()
+    public function testHandle(): void
     {
         $swooleRequest = $this->mockSwooleRequest();
         $swooleResponse = $this->mockSwooleResponse();

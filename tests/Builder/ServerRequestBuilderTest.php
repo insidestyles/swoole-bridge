@@ -1,26 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: insidestyles
- * Date: 08.05.18
- * Time: 10:00
- */
 
 namespace Insidestyles\SwooleBridge\Tests\Builder;
 
 use Insidestyles\SwooleBridge\Builder\ServerRequestBuilder;
 use Insidestyles\SwooleBridge\Tests\Base\BaseTestCase;
+use Laminas\Diactoros\ServerRequest;
+use PHPUnit\Framework\MockObject\MockObject;
 use Swoole\Http\Request as SwooleRequest;
-use Zend\Diactoros\ServerRequest;
 
 class ServerRequestBuilderTest extends BaseTestCase
 {
-    /**
-     * @var ServerRequestBuilder
-     */
-    private $instance;
+    private ServerRequestBuilder $instance;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->instance = new ServerRequestBuilder();
     }
@@ -28,16 +20,16 @@ class ServerRequestBuilderTest extends BaseTestCase
     /**
      * @group builder
      */
-    public function testBuild()
+    public function testBuild(): void
     {
-        /** @var SwooleRequest|\PHPUnit_Framework_MockObject_MockObject $swooleRequest */
+        /** @var SwooleRequest|MockObject$swooleRequest */
         $swooleRequest = $this->mockSwooleRequest();
         $swooleRequest->header = [
             'CONTENT_TYPE' => 'application/x-www-form-urlencoded',
         ];
         $swooleRequest->server = [
             'REQUEST_METHOD' => 'GET',
-            'USER' => 'insidestyles',
+            'USER' => 'root',
             'HTTP_CACHE_CONTROL' => '',
             'HTTP_UPGRADE_INSECURE_REQUESTS' => '',
             'HTTP_CONNECTION' => '',

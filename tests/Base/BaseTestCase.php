@@ -1,4 +1,5 @@
 <?php
+
 namespace Insidestyles\SwooleBridge\Tests\Base;
 
 use Insidestyles\SwooleBridge\Tests\Traits\ObjectCreatorTrait;
@@ -9,13 +10,10 @@ abstract class BaseTestCase extends TestCase
 {
     use ServiceMocksTrait;
     use ObjectCreatorTrait;
-
-    /**
-     * @var string
-     */
+    
     public static $testPath = '';
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$testPath = __DIR__ . '/../';

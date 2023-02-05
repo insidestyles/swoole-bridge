@@ -3,25 +3,21 @@ declare(strict_types=1);
 
 namespace Insidestyles\SwooleBridge\Builder;
 
+use Laminas\Diactoros\ServerRequest;
 use Psr\Http\Message\ServerRequestInterface;
 use Swoole\Http\Request as SwooleRequest;
-use Zend\Diactoros\ServerRequest;
 
 /**
- * Class ServerRequestBuilder
- * @package Insidestyles\SwooleBridge\Builder
+ * @author Fuong <insidestyles@gmail.com>
  */
 class ServerRequestBuilder implements RequestBuilderInterface
 {
-    /**
-     * @var ServerRequestInterface
-     */
-    private $request;
+    private ServerRequestInterface $request;
 
     /**
      * @inheritdoc
      */
-    public function build(SwooleRequest $swooleRequest)
+    public function build(SwooleRequest $swooleRequest): void
     {
         $body = (string)$swooleRequest->rawContent();
 
@@ -96,9 +92,6 @@ class ServerRequestBuilder implements RequestBuilderInterface
         return $return;
     }
 
-    /**
-     * @return ServerRequestInterface
-     */
     public function getRequest(): ServerRequestInterface
     {
         return $this->request;

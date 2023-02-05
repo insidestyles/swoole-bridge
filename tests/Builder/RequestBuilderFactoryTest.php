@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: insidestyles
- * Date: 07.05.18
- * Time: 15:40
- */
 
 namespace Insidestyles\SwooleBridge\Tests\Builder;
 
@@ -15,12 +9,9 @@ use Symfony\Component\HttpFoundation\Request as SfRequest;
 
 class RequestBuilderFactoryTest extends BaseTestCase
 {
-    /**
-     * @var RequestBuilderFactory
-     */
-    private $instance;
+    private RequestBuilderFactory $instance;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->instance = new RequestBuilderFactory();
     }
@@ -28,7 +19,7 @@ class RequestBuilderFactoryTest extends BaseTestCase
     /**
      * @group builder
      */
-    public function testCreateServerRequest()
+    public function testCreateServerRequest(): void
     {
         $swooleRequest = $this->mockSwooleRequest();
         $swooleRequest->header = [];

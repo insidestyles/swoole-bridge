@@ -1,39 +1,25 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: insidestyles
- * Date: 08.05.18
- * Time: 9:32
- */
 
 namespace Insidestyles\SwooleBridge\Tests;
 
 use Insidestyles\SwooleBridge\Adapter\SwooleAdapterInterface;
 use Insidestyles\SwooleBridge\Handler;
 use Insidestyles\SwooleBridge\Tests\Base\BaseTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
- * Class HandlerTest
- * @package Insidestyles\SwooleBridge\Tests
+ * @author Fuong <insidestyles@gmail.com>
  */
 class HandlerTest extends BaseTestCase
 {
-    /**
-     * @var Handler
-     */
-    private $instance;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $adapterMock;
+    private Handler $instance;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $loggerMock;
+    private MockObject $adapterMock;
 
-    protected function setUp()
+    private MockObject $loggerMock;
+
+    protected function setUp(): void
     {
         $this->adapterMock = $this->mock(SwooleAdapterInterface::class);
         $this->loggerMock = $this->mockPsrLogger();
@@ -46,7 +32,7 @@ class HandlerTest extends BaseTestCase
     /**
      * @group handler
      */
-    public function testHandle_WithError()
+    public function testHandle_WithError(): void
     {
         $swooleRequest = $this->mockSwooleRequest();
         $swooleResponse = $this->mockSwooleResponse();
@@ -59,7 +45,7 @@ class HandlerTest extends BaseTestCase
     /**
      * @group handler
      */
-    public function testHandle()
+    public function testHandle(): void
     {
         $swooleRequest = $this->mockSwooleRequest();
         $swooleResponse = $this->mockSwooleResponse();

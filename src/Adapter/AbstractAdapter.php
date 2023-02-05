@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: insidestyles
- * Date: 05.05.18
- * Time: 10:38
- */
 
 namespace Insidestyles\SwooleBridge\Adapter;
 
@@ -16,39 +10,15 @@ use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
 
 /**
- * Class AbstractAdapter
- * @package Insidestyles\SwooleBridge\Adapter
+ * @author Fuong <insidestyles@gmail.com>
  */
 abstract class AbstractAdapter implements SwooleAdapterInterface
 {
-    /**
-     * @var RequestHandlerInterface
-     */
-    protected $requestHandler;
-
-    /**
-     * @var RequestBuilderFactory
-     */
-    protected $requestBuilderFactory;
-
-    /**
-     * @var SwooleResponseEmitterInterface
-     */
-    protected $responseEmitter;
-
-    /**
-     * AbstractAdapter constructor.
-     * @param SwooleResponseEmitterInterface $responseEmitter
-     * @param RequestBuilderFactory $requestBuilder
-     */
     public function __construct(
-        SwooleResponseEmitterInterface $responseEmitter,
-        RequestHandlerInterface $requestHandler,
-        RequestBuilderFactory $requestBuilder
+        protected readonly SwooleResponseEmitterInterface $responseEmitter,
+        protected readonly RequestHandlerInterface $requestHandler,
+        protected readonly RequestBuilderFactory $requestBuilderFactory
     ) {
-        $this->requestBuilderFactory = $requestBuilder;
-        $this->requestHandler = $requestHandler;
-        $this->responseEmitter = $responseEmitter;
     }
 
     /**

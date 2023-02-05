@@ -1,45 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: insidestyles
- * Date: 15.08.18
- * Time: 12:23
- */
 
 namespace Insidestyles\SwooleBridge\Tests\Adapter\Kernel;
 
 use Illuminate\Contracts\Http\Kernel;
 use Insidestyles\SwooleBridge\Adapter\Kernel\Psr15IllumimateKernel;
 use Insidestyles\SwooleBridge\Tests\Base\BaseTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Class Psr15IllumimateKernelTest
- * @package Insidestyles\SwooleBridge\Tests\Adapter\Kernel
+ * @author Fuong <insidestyles@gmail.com>
  */
 class Psr15IllumimateKernelTest extends BaseTestCase
 {
-    /**
-     * @var Psr15IllumimateKernel
-     */
-    private $instance;
+    private Psr15IllumimateKernel $instance;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject|Kernel
-     */
-    private $httpKernelMock;
+    private MockObject|Kernel $httpKernelMock;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $httpFoundationFactoryMock;
+    private MockObject $httpFoundationFactoryMock;
 
-    /**
-     * @var \PHPUnit_Framework_MockObject_MockObject
-     */
-    private $httpMessageFactoryMock;
+    private MockObject $httpMessageFactoryMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->httpKernelMock = $this->mockIlluminateKernelInterface();
         $this->httpFoundationFactoryMock = $this->mockHttpFoundationFactoryInterface();
@@ -54,7 +36,7 @@ class Psr15IllumimateKernelTest extends BaseTestCase
     /**
      * @throws \Exception
      */
-    public function testHandle()
+    public function testHandle(): void
     {
         /** @var ServerRequestInterface $request */
         $request = $this->mockPsrServerRequest();
