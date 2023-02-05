@@ -46,6 +46,9 @@ final class SwooleResponseEmitter implements SwooleResponseEmitterInterface
     ) {
         $content = $psr7Response->getBody();
         $content->rewind();
-        $swooleResponse->write($content->getContents());
+        $res = $content->getContents();
+        if (!empty($res)) {
+            $swooleResponse->write($res);
+        }
     }
 }
